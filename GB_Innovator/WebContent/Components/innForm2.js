@@ -20,6 +20,21 @@ $(document).on("click", "#btnSubmit", function(event)
 	return;
 	}
 	
+	//If form is valid
+	var type = ($("#hidItemIDSave").val() == "") ? "POST" : "PUT";
+	
+	$.ajax(
+			{ 
+			 url : "InnovatorAPI", 
+			 type : type, 
+			 data : $("#formInnv2").serialize(), 
+			 dataType : "text", 
+			 complete : function(response, status) 
+			 { 
+			 onItemSaveComplete(response.responseText, status); 
+			 } 
+			});
+	
 });
 
 function validateItemForm2()

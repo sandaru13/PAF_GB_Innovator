@@ -1,3 +1,4 @@
+<%@page import="com.Innovator"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -43,7 +44,7 @@
 			     <div class="col-lg-4">
 				  	 <div class="card" style="width:500px;margin-left:290px;margin-top:40px" >
 				  		
-				  		<form style="margin:30px 30px 30px 30px;">
+				  		<form style="margin:30px 30px 30px 30px;" id="formInnv2" name="formInnv2">
 				  							
 					        Nationality
 						    <input type="text" class="form-control" name="nationality"  id="nationality" placeholder="" ><br>
@@ -63,12 +64,23 @@
 							Contact Number
 							<input type="text" class="form-control" name="contacNumber" id="contacNumber" placeholder="" ><br>
 						
-						<button type="button" name="btnSubmit" id="btnSubmit" class="btn btn-success" onclick="location.href='http://localhost:8080/GadgetBadget_PAF_Project/innvFormP3.jsp'">Proceed to next page</button>
-				    	
-				    	<div id="alertSuccess" class="alert alert-success"></div>
-					   	<div id="alertError" class="alert alert-danger"></div>
-				    	
+						 	<input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary">
+					   
+					   		<input type="hidden" id="hidItemIDSave" name="hidItemIDSave" value="">
+				    				    	
 				      </form>
+				      
+				      <div id="alertSuccess" class="alert alert-success"></div>
+					  <div id="alertError" class="alert alert-danger"></div>
+								<br>
+								
+					   <div id="divItemsGrid">
+						<%
+							Innovator innvObj = new Innovator(); 
+							out.print(innvObj.readItems()); 
+						 %>
+					   </div>
+				      
 				  </div>
 				</div>
 			</div>
