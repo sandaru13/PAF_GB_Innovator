@@ -4,7 +4,7 @@ $(document).ready(function()
 		$("#alertError").hide();
 });
 
-$(document).on("click", "#btnSubmit", function(event)
+$(document).on("click", "#btnSave", function(event)
 {
 	$("#alertSuccess").text("");
 	$("#alertSuccess").hide();
@@ -19,6 +19,21 @@ $(document).on("click", "#btnSubmit", function(event)
 	$("#alertError").show();
 	return;
 	}
+	
+	//If form is valid
+	var type = ($("#hidItemIDSave").val() == "") ? "POST" : "PUT";
+	
+	$.ajax(
+			{ 
+			 url : "InnovatorAPI", 
+			 type : type, 
+			 data : $("#formInnv").serialize(), 
+			 dataType : "text", 
+			 complete : function(response, status) 
+			 { 
+			 onItemSaveComplete(response.responseText, status); 
+			 } 
+			});
 	
 });
 
@@ -57,4 +72,6 @@ function validateItemForm1()
 	
 	return true;
 }
+
+
 

@@ -1,3 +1,4 @@
+<%@page import="com.Innovator"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -42,7 +43,7 @@
 			<div class="col-lg-4">
 				  <div class="card" style="width:500px;margin-left:290px;" >
 				
-					<form style="margin:30px 30px 30px 30px;" method="POST" action="" method="post">
+					<form style="margin:30px 30px 30px 30px;" id="formInnv" name="formInnv">
 					
 					    <label for="Title">Campaign Title</label>
 					    <input type="text" class="form-control" name="campTitle" id ="campTitle"  placeholder="yo...">
@@ -64,11 +65,11 @@
 					    
 					    <label for="manage">The Project is managed by</label>
 					    <br>
-					        <input type="radio" id="solo" name="manage" value="solo">
+					        <input type="radio" id="manage" name="manage" value="solo">
 							<label for="solo">By Me</label><br>
-							<input type="radio" id="org" name="manage" value="org">
+							<input type="radio" id="manage" name="manage" value="org">
 							<label for="org">By My Organization</label><br>
-							<input type="radio" id="friends" name="manage" value="friends">
+							<input type="radio" id="manage" name="manage" value="friends">
 							<label for="friends">with my friends</label><br>
 						<br>
 						
@@ -110,13 +111,24 @@
 					    <label for="AgreementP1">Terms and Conditions</label><br>
 				
 					   <!--  <button type="button" class="btn btn-success" onclick="location.href='http://localhost:8080/GadgetBadget_PAF_Project/innvFormP2.jsp'">Proceed to next page</button> -->
-					   <input name="btnSubmit" id="btnSubmit" type="submit" value="Save" >
+					   <input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary">
 					   
-					   <div id="alertSuccess" class="alert alert-success"></div>
-					   <div id="alertError" class="alert alert-danger"></div>
+					   <input type="hidden" id="hidItemIDSave" name="hidItemIDSave" value="">
 					   
 					  </form>
-					</div>
+					  
+					  <div id="alertSuccess" class="alert alert-success"></div>
+					  <div id="alertError" class="alert alert-danger"></div>
+								<br>
+								
+					   <div id="divItemsGrid">
+						<%
+							Innovator innvObj = new Innovator(); 
+							out.print(innvObj.readItems()); 
+						 %>
+					   </div>
+					  
+					</div>	
 				</div>
 			</div>
 		
